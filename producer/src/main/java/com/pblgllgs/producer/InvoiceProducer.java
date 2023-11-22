@@ -6,6 +6,7 @@ package com.pblgllgs.producer;
  *
  */
 
+import com.pblgllgs.entities.InvoiceCancelledMessage;
 import com.pblgllgs.entities.InvoiceCreatedMessage;
 import com.pblgllgs.entities.InvoicePaidMessage;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,10 @@ public class InvoiceProducer {
     }
 
     public void sendInvoice(InvoicePaidMessage message){
+        rabbitTemplate.convertAndSend(exchange,"",message);
+    }
+
+    public void sendInvoice(InvoiceCancelledMessage message){
         rabbitTemplate.convertAndSend(exchange,"",message);
     }
 

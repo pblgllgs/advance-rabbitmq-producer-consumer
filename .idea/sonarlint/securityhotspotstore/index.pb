@@ -51,3 +51,9 @@ n
 >producer/src/main/java/com/pblgllgs/config/RabbitMQConfig.java,a\3\a33d0d3f97b85675b3b00d99c9b69139cc9a944a
 l
 <producer/src/main/java/com/pblgllgs/ProducerApplication.java,3\f\3fade3bed33b3f174319f56bae40c38c765add5b
+y
+Iproducer/src/main/java/com/pblgllgs/entities/InvoiceCancelledMessage.java,d\a\dada3d4b1b27e5ad80978b2745540a11091e6d86
+w
+Gproducer/src/main/java/com/pblgllgs/entities/InvoiceCreatedMessage.java,1\1\119d160cbd4e9bc00ec2cbd4a071d57e9adcec59
+y
+Iconsumer/src/main/java/com/pblgllgs/entities/InvoiceCancelledMessage.java,d\9\d9639c92806757ebc4f7e9f02456c70404c10120

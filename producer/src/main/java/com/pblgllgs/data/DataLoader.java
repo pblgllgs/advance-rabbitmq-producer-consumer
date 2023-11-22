@@ -6,6 +6,7 @@ package com.pblgllgs.data;
  *
  */
 
+import com.pblgllgs.entities.InvoiceCancelledMessage;
 import com.pblgllgs.entities.InvoiceCreatedMessage;
 import com.pblgllgs.entities.InvoicePaidMessage;
 import com.pblgllgs.producer.InvoiceProducer;
@@ -39,6 +40,13 @@ public class DataLoader implements CommandLineRunner {
                 LocalDate.now(),
                 randomPaymentNumber);
         producer.sendInvoice(invoicePaidMessage);
+
+        randomInvoiceNumber = "INV-" + ThreadLocalRandom.current().nextInt(200, 300);
+        var invoiceCancelledMessage = new InvoiceCancelledMessage(
+                LocalDate.now(),
+                randomInvoiceNumber,
+                "canceled") ;
+        producer.sendInvoice(invoiceCancelledMessage);
         log.info("DONE!!");
     }
 }
