@@ -12,9 +12,7 @@ server:
   port: 8080
 
 x:
-  invoice: x.invoice
+  single: x.single
 
 q:
-  invoice:
-    uno: q.invoice.uno
-    dos: q.invoice.dos
+  single: q.single

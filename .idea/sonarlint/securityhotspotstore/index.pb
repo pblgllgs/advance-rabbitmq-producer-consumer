@@ -59,3 +59,11 @@ y
 Iconsumer/src/main/java/com/pblgllgs/entities/InvoiceCancelledMessage.java,d\9\d9639c92806757ebc4f7e9f02456c70404c10120
 C
 producer/.gitignore,6\9\69e4aec5afc1db340861b7407e67c290da3e970d
+v
+Fproducer/src/main/java/com/pblgllgs/producer/SingleActiveProducer.java,2\4\24739557f90e285bc90abda3cb41351bbadd34e1
+n
+>producer/src/main/java/com/pblgllgs/entities/DummyMessage.java,f\a\fa0924d83660c6d797a00d6ca6d35009cfdbdc23
+n
+>consumer/src/main/java/com/pblgllgs/entities/DummyMessage.java,0\5\05b17116387e25612795a0f7ee46d59edb94f4ad
+v
+Fconsumer/src/main/java/com/pblgllgs/consumer/SingleActiveConsumer.java,c\d\cd5e904e3a3df859bd11b8b7661f43ab8fdc53b5

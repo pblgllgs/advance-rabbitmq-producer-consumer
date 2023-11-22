@@ -16,22 +16,34 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${q.invoice}")
-    private String queue1;
-    @Value("${q.invoice}")
-    private String queue2;
+    @Value("${q.single}")
+    private String queue;
+
+
+    @Value("${x.single}")
+    private String exchange;
 
     @Bean
-    public Queue newQueue1() {
-        return new Queue(queue1);
+    public Queue myQueue() {
+        Map<String, Object> arguments = new HashMap<>();
+        arguments.put("x-single-active-consumer", true);
+        return new Queue(queue, true, false, false, arguments);
     }
 
     @Bean
-    public Queue newQueue2() {
-        return new Queue(queue2);
+    public FanoutExchange fanoutExchange(){
+        return new FanoutExchange(exchange);
+    }
+
+    @Bean
+    public Binding binding(Queue myQueue,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(myQueue).to(fanoutExchange);
     }
 
 

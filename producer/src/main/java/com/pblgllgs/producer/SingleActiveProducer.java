@@ -6,6 +6,7 @@ package com.pblgllgs.producer;
  *
  */
 
+import com.pblgllgs.entities.DummyMessage;
 import com.pblgllgs.entities.InvoiceCreatedMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,15 +15,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class InvoiceProducer {
+public class SingleActiveProducer {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${x.invoice}")
+    @Value("${x.single}")
     private String exchange;
 
-    public void sendInvoice(InvoiceCreatedMessage message) {
-        rabbitTemplate.convertAndSend(exchange, message.getInvoiceNumber(), message);
+    public void sendInvoice() {
+        for (int i = 0; i < 10000; i++) {
+            DummyMessage dummyMessage = new DummyMessage("Message " + i, i);
+            rabbitTemplate.convertAndSend(exchange, "", dummyMessage);
+
+        }
     }
 
 }
