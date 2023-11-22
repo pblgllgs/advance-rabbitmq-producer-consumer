@@ -1,10 +1,5 @@
-# CREATE queue
+# Single active consumer
 
+## Run second instance
 
-```bash
-docker exec -it rabbitmq bash
-
-rabbitmq-plugins enable rabbitmq_consistent_hash_exchange
-```
-
-Create new queue with type x-consistent-hash
+Run second instance in different port and then stop instance 1 and see how the second instance begin to consume messages
