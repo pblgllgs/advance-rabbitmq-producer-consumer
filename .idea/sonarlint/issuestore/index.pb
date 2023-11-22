@@ -69,3 +69,7 @@ v
 Fconsumer/src/main/java/com/pblgllgs/consumer/SingleActiveConsumer.java,c\d\cd5e904e3a3df859bd11b8b7661f43ab8fdc53b5
 r
 Bproducer/src/main/java/com/pblgllgs/producer/ReliableProducer.java,9\b\9bb290f37578684068b3bb97b0c6da713134c04d
+t
+Dproducer/src/main/java/com/pblgllgs/entities/InvoicePaidMessage.java,5\c\5c1166ca908f7778f4164b34374780720fa024d7
+u
+Econsumer/src/main/java/com/pblgllgs/entities/PaymentCancelStatus.java,b\2\b2e36f4ff8c6555388698ddc5354edad18ae06da

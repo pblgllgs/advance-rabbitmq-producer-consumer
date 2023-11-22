@@ -13,7 +13,9 @@ server:
   port: 8081
 
 x:
-  single: x.single
+  invoice: x.invoice
+  invoice-cancel: x.invoice.cancel
 
 q:
-  single: q.single
+  invoice: q.invoice
+  invoice-cancel: x.invoice.cancel

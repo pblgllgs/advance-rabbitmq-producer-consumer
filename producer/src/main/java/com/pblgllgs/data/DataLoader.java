@@ -6,26 +6,32 @@ package com.pblgllgs.data;
  *
  */
 
-import com.pblgllgs.entities.DummyMessage;
-import com.pblgllgs.producer.ReliableProducer;
-import com.pblgllgs.producer.SingleActiveProducer;
+import com.pblgllgs.entities.InvoiceCancelledMessage;
+import com.pblgllgs.producer.InvoiceProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
 public class DataLoader implements CommandLineRunner {
-    private final ReliableProducer producer;
+    private final InvoiceProducer producer;
 
     @Override
     public void run(String... args) {
-        DummyMessage dummyMessage1 = new DummyMessage("Invalid test", 10);
-        DummyMessage dummyMessage2 = new DummyMessage("Invalid test", 20);
-        producer.sendDummyToInvalidExchange(dummyMessage1);
-        producer.sendDummyWithInvalidRoutingKey(dummyMessage2);
+        for (int i = 0; i < 10; i++) {
+            String invoiceNumber = "INV-" + i;
+            InvoiceCancelledMessage invoiceCancelledMessage = new InvoiceCancelledMessage(
+                    LocalDate.now(),
+                    invoiceNumber,
+                    "Test " + i
+            );
+            producer.sendInvoiceCanceled(invoiceCancelledMessage);
+        }
         log.info("DONE!!");
     }
 }

@@ -22,30 +22,49 @@ import java.util.Map;
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${q.single}")
-    private String queue;
+    @Value("${q.invoice}")
+    private String queue1;
+
+    @Value("${q.invoice-cancel}")
+    private String queue2;
 
 
-    @Value("${x.single}")
-    private String exchange;
+    @Value("${x.invoice}")
+    private String exchange1;
+
+    @Value("${x.invoice-cancel}")
+    private String exchange2;
+
 
     @Bean
-    public Queue myQueue() {
-        Map<String, Object> arguments = new HashMap<>();
-        arguments.put("x-single-active-consumer", true);
-        return new Queue(queue, true, false, false, arguments);
+    public Queue newQueue1(){
+        return new Queue(queue1);
     }
 
     @Bean
-    public FanoutExchange fanoutExchange(){
-        return new FanoutExchange(exchange);
+    public Queue newQueue2(){
+        return new Queue(queue2);
     }
 
     @Bean
-    public Binding binding(Queue myQueue,FanoutExchange fanoutExchange){
-        return BindingBuilder.bind(myQueue).to(fanoutExchange);
+    public FanoutExchange fanoutExchange1(){
+        return new FanoutExchange(exchange1);
     }
 
+    @Bean
+    public FanoutExchange fanoutExchange2(){
+        return new FanoutExchange(exchange2);
+    }
+
+    @Bean
+    public Binding binding1(Queue newQueue1,FanoutExchange fanoutExchange1){
+        return BindingBuilder.bind(newQueue1).to(fanoutExchange1);
+    }
+
+    @Bean
+    public Binding binding2(Queue newQueue2,FanoutExchange fanoutExchange2){
+        return BindingBuilder.bind(newQueue2).to(fanoutExchange2);
+    }
 
     @Bean
     Jackson2JsonMessageConverter jsonMessageConverter() {
