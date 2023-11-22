@@ -57,3 +57,5 @@ w
 Gproducer/src/main/java/com/pblgllgs/entities/InvoiceCreatedMessage.java,1\1\119d160cbd4e9bc00ec2cbd4a071d57e9adcec59
 y
 Iconsumer/src/main/java/com/pblgllgs/entities/InvoiceCancelledMessage.java,d\9\d9639c92806757ebc4f7e9f02456c70404c10120
+C
+producer/.gitignore,6\9\69e4aec5afc1db340861b7407e67c290da3e970d

@@ -19,27 +19,21 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${q.invoice}")
-    private String queue;
-
-
-    @Value("${x.invoice}")
-    private String exchange;
+    @Value("${q.invoice.uno}")
+    private String queue1;
+    @Value("${q.invoice.dos}")
+    private String queue2;
 
     @Bean
-    public Queue newQueue() {
-        return new Queue(queue);
+    public Queue newQueue1() {
+        return new Queue(queue1);
     }
 
     @Bean
-    public FanoutExchange exchange() {
-        return new FanoutExchange(exchange);
+    public Queue newQueue2() {
+        return new Queue(queue2);
     }
 
-    @Bean
-    public Binding binding(Queue newQueue, FanoutExchange exchange) {
-        return BindingBuilder.bind(newQueue).to(exchange);
-    }
 
     @Bean
     Jackson2JsonMessageConverter jsonMessageConverter() {
@@ -48,12 +42,10 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
 
-
-
     @Bean
-    RabbitTemplate rabbitTemplate(Jackson2JsonMessageConverter converter, ConnectionFactory connectionFactory) {
+    RabbitTemplate rabbitTemplate(Jackson2JsonMessageConverter jsonMessageConverter, ConnectionFactory connectionFactory) {
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
-        template.setMessageConverter( jsonMessageConverter());
+        template.setMessageConverter(jsonMessageConverter);
         return template;
     }
 

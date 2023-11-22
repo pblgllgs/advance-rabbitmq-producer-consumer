@@ -15,4 +15,6 @@ x:
   invoice: x.invoice
 
 q:
-  invoice: q.invoice
+  invoice:
+    uno: q.invoice.uno
+    dos: q.invoice.dos

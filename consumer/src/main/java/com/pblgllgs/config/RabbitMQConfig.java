@@ -8,10 +8,7 @@ package com.pblgllgs.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -23,26 +20,20 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     @Value("${q.invoice}")
-    private String queue;
-
-
-    @Value("${x.invoice}")
-    private String exchange;
+    private String queue1;
+    @Value("${q.invoice}")
+    private String queue2;
 
     @Bean
-    public Queue newQueue() {
-        return new Queue(queue);
+    public Queue newQueue1() {
+        return new Queue(queue1);
     }
 
     @Bean
-    public FanoutExchange exchange() {
-        return new FanoutExchange(exchange);
+    public Queue newQueue2() {
+        return new Queue(queue2);
     }
 
-    @Bean
-    public Binding binding(Queue newQueue, FanoutExchange exchange) {
-        return BindingBuilder.bind(newQueue).to(exchange);
-    }
 
     @Bean
     Jackson2JsonMessageConverter jsonMessageConverter() {
