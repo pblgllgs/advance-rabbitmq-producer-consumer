@@ -31,3 +31,5 @@ Gconsumer/src/main/java/com/pblgllgs/consumer/config/RabbitMQConfig.java,4\4\44
 Mconsumer/src/main/java/com/pblgllgs/consumer/scheduler/RabbitMQScheduler.java,7\2\7268b5306bc20b44698ed64c13870a5f83b3b324
 u
 Econsumer/src/main/java/com/pblgllgs/consumer/ConsumerApplication.java,4\c\4c2041d2eb1aa3986f534c277514356af4864ce3
+€
+Pconsumer/src/main/java/com/pblgllgs/consumer/consumer/DummyPrefetchConsumer.java,6\4\6438c553ab9a54fcacc0d52e4e6634a40d31b667

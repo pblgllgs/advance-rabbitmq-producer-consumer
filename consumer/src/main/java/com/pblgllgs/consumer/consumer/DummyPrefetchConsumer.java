@@ -11,12 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
-//@Service
-@Slf4j
-public class DummyConsumer {
+import java.util.concurrent.TimeUnit;
 
-    @RabbitListener(queues = "q.dummy")
-    public void consumerDummy(DummyMessage dummyMessage){
+@Service
+@Slf4j
+public class DummyPrefetchConsumer {
+
+    @RabbitListener(queues = "q.dummy", concurrency = "2")
+    public void consumerDummy(DummyMessage dummyMessage) throws InterruptedException {
         log.info(dummyMessage.toString());
+        TimeUnit.SECONDS.sleep(20);
     }
 }

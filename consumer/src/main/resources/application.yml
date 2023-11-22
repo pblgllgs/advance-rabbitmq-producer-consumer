@@ -6,6 +6,9 @@ spring:
     port: 5672
     username: guest
     password: guest
+#    listener:
+#      simple:
+#        prefetch: 1
   application:
     name: consumer
 

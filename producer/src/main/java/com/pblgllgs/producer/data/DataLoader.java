@@ -14,7 +14,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.concurrent.TimeUnit;
 
 @Component
 @RequiredArgsConstructor
@@ -24,14 +23,13 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws InterruptedException {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 500; i++) {
             DummyMessage dummyMessage = DummyMessage.builder()
                     .content("Now is " + LocalDate.now())
                     .publishOrder(i)
                     .build();
             log.info(dummyMessage.toString());
             dummyProducer.sendDummy(dummyMessage);
-            TimeUnit.SECONDS.sleep(1);
         }
     }
 }
