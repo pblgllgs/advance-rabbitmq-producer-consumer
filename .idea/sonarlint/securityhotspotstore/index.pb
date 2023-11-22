@@ -67,3 +67,5 @@ n
 >consumer/src/main/java/com/pblgllgs/entities/DummyMessage.java,0\5\05b17116387e25612795a0f7ee46d59edb94f4ad
 v
 Fconsumer/src/main/java/com/pblgllgs/consumer/SingleActiveConsumer.java,c\d\cd5e904e3a3df859bd11b8b7661f43ab8fdc53b5
+r
+Bproducer/src/main/java/com/pblgllgs/producer/ReliableProducer.java,9\b\9bb290f37578684068b3bb97b0c6da713134c04d
