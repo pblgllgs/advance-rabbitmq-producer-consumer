@@ -16,26 +16,45 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${q.dummy}")
-    private String queue;
+    @Value("${q.transaction}")
+    private String queue1;
+
+    @Value("${q.scheduler}")
+    private String queue2;
 
 
-    @Value("${x.dummy}")
-    private String exchange;
+    @Value("${x.transaction}")
+    private String exchangeTransaction;
+
+    @Value("${x.scheduler}")
+    private String exchangeScheduler;
 
     @Bean
-    public Queue newQueue() {
-        return new Queue(queue);
+    public Queue newQueue1() {
+        return new Queue(queue1);
+    }
+    @Bean
+    public Queue newQueue2() {
+        return new Queue(queue2);
     }
 
     @Bean
-    public FanoutExchange exchangeFanout() {
-        return new FanoutExchange(exchange);
+    public FanoutExchange exchange1() {
+        return new FanoutExchange(exchangeTransaction);
+    }
+    @Bean
+    public FanoutExchange exchange2() {
+        return new FanoutExchange(exchangeScheduler);
     }
 
     @Bean
-    public Binding binding(Queue newQueue, FanoutExchange exchangeFanout) {
-        return BindingBuilder.bind(newQueue).to(exchangeFanout);
+    public Binding binding1(Queue newQueue1, FanoutExchange exchange1) {
+        return BindingBuilder.bind(newQueue1).to(exchange1);
+    }
+
+    @Bean
+    public Binding binding2(Queue newQueue2, FanoutExchange exchange2) {
+        return BindingBuilder.bind(newQueue2).to(exchange2);
     }
 
     @Bean

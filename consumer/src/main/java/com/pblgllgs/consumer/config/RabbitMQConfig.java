@@ -7,40 +7,18 @@ package com.pblgllgs.consumer.config;
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistry;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
-
-    @Value("${q.dummy}")
-    private String queue;
-
-
-    @Value("${x.dummy}")
-    private String exchange;
-
-    @Bean
-    public Queue newQueue() {
-        return new Queue(queue);
-    }
-
-    @Bean
-    public FanoutExchange exchangeFanout() {
-        return new FanoutExchange(exchange);
-    }
-
-    @Bean
-    public Binding binding(Queue newQueue, FanoutExchange exchangeFanout) {
-        return BindingBuilder.bind(newQueue).to(exchangeFanout);
-    }
 
     @Bean
     public Jackson2JsonMessageConverter converter() {
@@ -51,5 +29,27 @@ public class RabbitMQConfig {
     @Bean
     public RabbitListenerEndpointRegistry rabbitListenerEndpointRegistry() {
         return new RabbitListenerEndpointRegistry();
+    }
+
+    @Bean
+    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> prefetchOneContainerFactory(
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            ConnectionFactory connectionFactory
+    ) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        configurer.configure(factory, connectionFactory);
+        factory.setPrefetchCount(1);
+        return factory;
+    }
+
+    @Bean
+    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> prefetchFiveContainerFactory(
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            ConnectionFactory connectionFactory
+    ) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        configurer.configure(factory, connectionFactory);
+        factory.setPrefetchCount(5);
+        return factory;
     }
 }

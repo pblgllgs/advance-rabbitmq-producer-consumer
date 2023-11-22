@@ -12,7 +12,9 @@ server:
   port: 8080
 
 x:
-  dummy: x.dummy
+  transaction: x.transaction
+  scheduler: x.scheduler
 
 q:
-  dummy: q.dummy
+  transaction: q.transaction
+  scheduler: q.scheduler

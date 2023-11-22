@@ -33,3 +33,9 @@ u
 Econsumer/src/main/java/com/pblgllgs/consumer/ConsumerApplication.java,4\c\4c2041d2eb1aa3986f534c277514356af4864ce3
 Ä
 Pconsumer/src/main/java/com/pblgllgs/consumer/consumer/DummyPrefetchConsumer.java,6\4\6438c553ab9a54fcacc0d52e4e6634a40d31b667
+Å
+Qproducer/src/main/java/com/pblgllgs/producer/producer/MultiPrefetcchProducer.java,5\d\5d727eaaf93cc56d6a6533d04c8ed2a3e91705d8
+Ä
+Pproducer/src/main/java/com/pblgllgs/producer/producer/MultiPrefetchProducer.java,9\a\9a907cf75650b483e053805f503296f625042a12
+Ä
+Pconsumer/src/main/java/com/pblgllgs/consumer/consumer/MultiPrefetchConsumer.java,9\a\9a43e4b85c70cb9d46aaa7b033206ac360870756
