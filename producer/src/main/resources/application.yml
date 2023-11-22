@@ -12,9 +12,7 @@ server:
   port: 8080
 
 x:
-  transaction: x.transaction
-  scheduler: x.scheduler
+  invoice: x.invoice
 
 q:
-  transaction: q.transaction
-  scheduler: q.scheduler
+  invoice: q.invoice

@@ -6,9 +6,6 @@ spring:
     port: 5672
     username: guest
     password: guest
-#    listener:
-#      simple:
-#        prefetch: 1
   application:
     name: consumer
 
@@ -16,7 +13,7 @@ server:
   port: 8081
 
 x:
-  dummy: x.dummy
+  invoice: x.invoice
 
 q:
-  dummy: q.dummy
+  invoice: q.invoice
