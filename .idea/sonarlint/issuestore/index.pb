@@ -2,8 +2,6 @@
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 @
-producer/HELP.md,3\3\332ed374831bb25860d941c3f14a2a38836402d7
-@
 consumer/HELP.md,d\3\d323de4f89a189ef68af53937c531d044d384b97
 @
 producer/pom.xml,6\f\6f3180fbaa9fd9b04b9b89872378382f932d7b0a
@@ -33,3 +31,7 @@ u
 Econsumer/src/main/java/com/pblgllgs/consumer/ConsumerApplication.java,4\c\4c2041d2eb1aa3986f534c277514356af4864ce3
 €
 Pconsumer/src/main/java/com/pblgllgs/consumer/consumer/DummyPrefetchConsumer.java,6\4\6438c553ab9a54fcacc0d52e4e6634a40d31b667
+C
+producer/.gitignore,6\9\69e4aec5afc1db340861b7407e67c290da3e970d
+
+Oconsumer/src/main/java/com/pblgllgs/consumer/consumer/AnotherDummyConsumer.java,8\a\8a051f7932f3d165ab0b2a76d4b10ca222182d93

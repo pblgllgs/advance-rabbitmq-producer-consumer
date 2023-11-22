@@ -24,18 +24,12 @@ public class RabbitMQConfig {
     private String exchange;
 
     @Bean
-    public Queue newQueue() {
-        return new Queue(queue);
-    }
-
-    @Bean
-    public FanoutExchange exchangeFanout() {
-        return new FanoutExchange(exchange);
-    }
-
-    @Bean
-    public Binding binding(Queue newQueue, FanoutExchange exchangeFanout) {
-        return BindingBuilder.bind(newQueue).to(exchangeFanout);
+    public Declarables rabbitSchema(){
+        return new Declarables(
+                new FanoutExchange(exchange, true, false),
+                new Queue(queue),
+                new Binding(queue, Binding.DestinationType.QUEUE,exchange, "",null)
+        );
     }
 
     @Bean

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
+//@Service
 @Slf4j
 public class DummyPrefetchConsumer {
 
